@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discount Collection</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+</head>
+<body>
+    <h1>Testing Discount Collection</h1>
+    <div class="testtable1">
+        {% if access_records %}
+        <table>
+            <thead>
+            <th>Site Name</th>
+            <th>Date Accessed</th>
+            </thead>
+            {% for acc in access_records %}
+            <tr>
+                <td>{{ acc.name | cut:'-'}}</td>
+                <td>{{ acc.date | date}}</td> <!--can define more advance filter function yourself-->
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No Access Records Found!</p>
+        {% endif %}
+
+
+    </div>
+    <img src="{% static "images/sample_image.jpg" %}" alt="load failed">
+<a href="{% url 'index' %}">Go back to homepage</a>
+</body>
+</html>

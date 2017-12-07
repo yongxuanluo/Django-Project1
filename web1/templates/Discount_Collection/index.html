@@ -1,0 +1,36 @@
+{% extends "Discount_Collection/base.html" %}
+{% block body_block %}
+{% load staticfiles %}
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Testing Discount Collection</h1>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Directory</h2>
+        <li><a href="{% url 'Discount_Collection:table' %}">Page: Table</a></li>
+        <li><a href="{% url 'Discount_Collection:register' %}">Page: Register</a></li>
+        <li><a href="{% url 'Discount_Collection:form_name' %}">Page: Form</a></li>
+    </div>
+    <div class="testtable1">
+        {% if access_records %}
+        <table>
+            <thead>
+            <th>Site Name</th>
+            <th>Date Accessed</th>
+            </thead>
+            {% for acc in access_records %}
+            <tr>
+                <td>{{ acc.name }}</td>
+                <td>{{ acc.date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>No Access Records Found!</p>
+        {% endif %}
+
+
+    </div>
+    <img src="{% static "images/sample_image.jpg" %}" alt="load failed">
+{% endblock %}
